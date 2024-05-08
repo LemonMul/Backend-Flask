@@ -30,7 +30,6 @@ const WeatherDashboard = () => {
       })
       .catch(error => {
         console.error('Error fetching weather data:', error);
-        // Assume error handling that does not involve user interface
       });
   };
 
@@ -41,6 +40,7 @@ const WeatherDashboard = () => {
       <Text style={styles.text}>Rain: {weatherData.rain}</Text>
       <Text style={styles.text}>Recommendation: {weatherData.name}, Type: {weatherData.place_type}, Address: {weatherData.address}</Text>
       <Text style={styles.text}>위도: {weatherData.latitude}, 경도: {weatherData.longitude}</Text>
+      <Text style={styles.text}>구이름: {weatherData.guName}, 동이름: {weatherData.dongName}</Text>
     </View>
   );
 };
