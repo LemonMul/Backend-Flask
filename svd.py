@@ -5,7 +5,7 @@ import pickle
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app, resources={r"/*": {"origins": "*"}})  # 모든 도메인에서의 요청을 허용
+CORS(app)
 
 # 모델 및 데이터 로드
 with open('svd_model.pkl', 'rb') as f:
