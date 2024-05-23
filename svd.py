@@ -5,7 +5,7 @@ import pickle
 from flask_cors import CORS
 
 app = Flask(__name__)
-CORS(app)
+CORS(app, resources={r"/*": {"origins": "*"}})  # 모든 도메인에서의 요청을 허용
 
 # 모델 및 데이터 로드
 with open('svd_model.pkl', 'rb') as f:
@@ -30,8 +30,8 @@ def get_svd_recom():
     predicted_ratings = pd.Series(all_predictions[user_index], index=pivot_table.columns)
     predicted_ratings = predicted_ratings.clip(lower=1, upper=5)
 
-    # 예측평점이 높은 순서대로 출력 (상위 3개 출력)
-    top_places = predicted_ratings.sort_values(ascending=False)[:4]
+    # 예측평점이 높은 순서대로 출력 (상위 1개 출력)
+    top_places = predicted_ratings.sort_values(ascending=False)[:1]
 
 
     # Place ID를 이용하여 Place Name과 첫 번째 Keyword 찾기
